@@ -26,7 +26,6 @@ const styles = {
 
 function Form() {
   return (
-    // inline styling
     <form style={styles.form}>
       <div style={styles.formGroup}>
         <label htmlFor="username" style={styles.formLabel}>
@@ -38,7 +37,6 @@ function Form() {
           style={styles.formInput}
         />
       </div>
-      {/* css modules */}
       <div className={cssModules.formGroup}>
         <label htmlFor="email" className={cssModules.formLabel}>
           Email
@@ -49,6 +47,16 @@ function Form() {
           placeholder="Input email"
           className={cssModules.formInput}
         />
+      </div>
+      <div className="form-group">
+        <label htmlFor="gender" className="form-label">
+          Gender
+        </label>
+        <select id="gender" className="form-select" defaultValue="Choose...">
+          <option>Choose...</option>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
       </div>
     </form>
   );

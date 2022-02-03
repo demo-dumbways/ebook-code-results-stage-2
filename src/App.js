@@ -1,4 +1,5 @@
-import Form from './components/Form';
+import "./styles/styles.css";
+import Form from "./components/Form";
 
 function App() {
   return (
