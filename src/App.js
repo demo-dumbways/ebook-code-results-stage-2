@@ -1,20 +1,29 @@
-//Import List Components
-import List from './components/List';
+import { useState } from 'react';
 
-function App() {
+function State() {
+  const [counter, setCounter] = useState(0);
+
+  function Add() {
+    return setCounter(counter + 1);
+  }
+
+  function Less() {
+    return setCounter(counter - 1);
+  }
+
   return (
     <div>
-      <p>On the image element using the default props, namely src</p>
-      <img
-        alt="kumparan"
-        src="https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,q_auto:best,w_640/v1542354895/ulaqus4ev5ihhqkpbhuz.jpg"
-      />
+      <p>
+        If you click the add button it will increase by one, vice versa if you
+        click the less button it will decrease by one
+      </p>
 
-      <List data="BMW" />
-      <List data="Mercedes-Benz" />
-      <List data="Lamborghini" />
+      <h2>{counter}</h2>
+
+      <button onClick={Add}>Add</button>
+      <button onClick={Less}>Less</button>
     </div>
   );
 }
 
-export default App;
+export default State;
