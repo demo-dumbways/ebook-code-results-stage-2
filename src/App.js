@@ -6,7 +6,7 @@ function App() {
     <div>
       <p>On the image element using the default props, namely src</p>
       <img
-        alt="image-example"
+        alt="kumparan"
         src="https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,q_auto:best,w_640/v1542354895/ulaqus4ev5ihhqkpbhuz.jpg"
       />
 
