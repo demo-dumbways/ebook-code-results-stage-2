@@ -1,29 +1,40 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-function App() {
-  const [counter, setCounter] = useState(0);
-
-  function Add() {
-    return setCounter(counter + 1);
-  }
-
-  function Less() {
-    return setCounter(counter - 1);
-  }
-
+//Create Component PrivatePage
+function PrivatePage(props) {
   return (
     <div>
-      <p>
-        If you click the add button it will increase by one, vice versa if you
-        click the less button it will decrease by one
-      </p>
-
-      <h2>{counter}</h2>
-
-      <button onClick={Add}>Add</button>
-      <button onClick={Less}>Less</button>
+      <h1>Welcome</h1>
+      {/* Parsing using Props */}
+      <button onClick={props.logout}>Logout</button>
     </div>
   );
 }
 
-export default App;
+//Create Component GuestPage
+function GuestPage(props) {
+  return (
+    <div>
+      <h1>Please Sign</h1>
+      {/* Parsing using Props */}
+      <button onClick={props.login}>Login</button>
+    </div>
+  );
+}
+
+function ConditionRenderin() {
+  //init State
+  const [isLoggedin, setIsLoggedin] = useState(false);
+  return (
+    <div>
+      {/* conditional logic rendering */}
+      {isLoggedin ? (
+        <PrivatePage logout={() => setIsLoggedin(!isLoggedin)} />
+      ) : (
+        <GuestPage login={() => setIsLoggedin(!isLoggedin)} />
+      )}
+    </div>
+  );
+}
+
+export default ConditionRenderin;
