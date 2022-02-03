@@ -1,23 +1,29 @@
+import { Component } from 'react';
+
 //Import Header Component
 import Header from './components/Header';
 
 // Content Component
-function Content() {
-  return (
-    <div>
-      <h1>This Is A Content</h1>
-      <button>Click Me</button>
-    </div>
-  );
+class Content extends Component {
+  render() {
+    return (
+      <div>
+        <h1>This Is A Content</h1>
+        <button>Click Me</button>
+      </div>
+    );
+  }
 }
 
-function App() {
-  return (
-    <div>
-      <Header />
-      <Content />
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Header />
+        <Content />
+      </div>
+    );
+  }
 }
 
 export default App;
