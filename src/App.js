@@ -1,15 +1,17 @@
 function App() {
-  function getMajor() {
-    return ' Full-Stack';
+  function Greeting() {
+    return alert('good morning everyone have a nice day');
   }
-
-  const companyName = 'Dumbways.id';
 
   return (
     <div>
-      <p>
-        Welcome To {companyName} Class {getMajor()}
-      </p>
+      <p>If you press Click Here then an alert will appear</p>
+      <button onClick={() => alert('Hello full-stack bootcamp participants')}>
+        Click Here
+      </button>
+
+      <p>If you press Greeting then an alert will appear</p>
+      <button onClick={Greeting}>Greeting</button>
     </div>
   );
 }
