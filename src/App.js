@@ -1,9 +1,8 @@
 function App() {
-  return (
-    <div>
-      <h1>Hallo World!</h1>
-    </div>
-  );
+  const name = 'Budi';
+  const element = <h1>Halo, {name}</h1>;
+
+  return <div>{element}</div>;
 }
 
 export default App;
