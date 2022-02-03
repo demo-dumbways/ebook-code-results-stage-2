@@ -1,5 +1,5 @@
 //Import Header Component
-import Header from './components/header';
+import Header from './components/Header';
 
 // Content Component
 function Content() {
