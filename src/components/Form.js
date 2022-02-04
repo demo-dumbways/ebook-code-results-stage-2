@@ -1,5 +1,10 @@
+// import React Bootstrap components
+import { Form, Col } from "react-bootstrap";
+
+// import css module file
 import cssModules from "./Form.module.css";
 
+// inline style
 const styles = {
   form: {
     margin: "16px 20% 0",
@@ -24,8 +29,9 @@ const styles = {
   },
 };
 
-function Form() {
+function FormComponent() {
   return (
+    //inline styling
     <form style={styles.form}>
       <div style={styles.formGroup}>
         <label htmlFor="username" style={styles.formLabel}>
@@ -37,6 +43,7 @@ function Form() {
           style={styles.formInput}
         />
       </div>
+      {/* css module */}
       <div className={cssModules.formGroup}>
         <label htmlFor="email" className={cssModules.formLabel}>
           Email
@@ -48,6 +55,7 @@ function Form() {
           className={cssModules.formInput}
         />
       </div>
+      {/* css global */}
       <div className="form-group">
         <label htmlFor="gender" className="form-label">
           Gender
@@ -58,8 +66,19 @@ function Form() {
           <option>Female</option>
         </select>
       </div>
+      {/* react-bootstrap componen */}
+      <Form.Row>
+        <Form.Group as={Col} md="6">
+          <Form.Label>City</Form.Label>
+          <Form.Control type="text" placeholder="City" required />
+        </Form.Group>
+        <Form.Group as={Col} md="6">
+          <Form.Label>State</Form.Label>
+          <Form.Control type="text" placeholder="State" required />
+        </Form.Group>
+      </Form.Row>
     </form>
   );
 }
 
-export default Form;
+export default FormComponent;
