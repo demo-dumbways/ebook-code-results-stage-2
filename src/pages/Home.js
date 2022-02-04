@@ -6,9 +6,9 @@ function Home() {
   // call useNavigate to get navigate instances
   const navigate = useNavigate();
 
-  // create function for handle navigate to another pages
+  // create function for handle push to another pages
   // using button
-  const handleNavigateToSignIn = () => {
+  const handlePushToSignIn = () => {
     navigate("/signin");
   };
 
@@ -25,7 +25,7 @@ function Home() {
         parturient montes, nascetur ridiculus mus. Donec et maximus tellus, sit
         amet hendrerit augue.
       </p>
-      <Button onClick={handleNavigateToSignIn}>Click to Signin</Button>
+      <Button onClick={handlePushToSignIn}>Click to Signin</Button>
     </Container>
   );
 }
