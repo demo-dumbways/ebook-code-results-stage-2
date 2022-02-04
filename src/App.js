@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import { 
     Container, 
     Row, Col, Form, 
@@ -7,81 +7,81 @@ import {
 import Welcome from './Welcome'
 import GuestGreeting from './GuestGreeting'
 
-export default class App extends Component {
+function App() {
 
-    constructor(){
-        super()
-        this.state = {
-            isLogin: false,
-            user: {
-                email: '',
-                password: ''
-            }
+    const [state, setState] = useState({
+        isLogin: false,
+        user: {
+            email: '',
+            password: ''
         }
-    }
+    })
 
-    componentDidMount(){
+    // Did Mount
+    useEffect(()=>{
         console.log("App Component Did Mount")
-        console.log(this.state)
-    }
+        console.log(state)
+    },[])
 
-    componentDidUpdate(){
-        console.log("App Component Did Update")
-        console.log(this.state)
-    }
+    // Did Update
+    useEffect(()=>{
+        if(state.user.email){
+            console.log("App Component Did Update")
+            console.log(state)
+        }
+    },[state])
 
-    handleOnSubmit = (e) => {
+    const handleOnSubmit = (e) => {
         e.preventDefault()
         const email = document.getElementById('email').value
         const password = document.getElementById('password').value
-        this.setState({
+        setState({
             isLogin: true,
             user: { 
                 email,
                 password
             }
         })
-        console.log(this.state)
     }
 
-    render() {
-        return (
-            <>
-                {this.state.isLogin ? <Welcome /> : 
-                    (<>
-                        <GuestGreeting />
-                        <Container>
-                            <Row 
-                            className="d-flex justify-content-center mt-5">
-                                <Col md="4">
-                                <Form onSubmit={this.handleOnSubmit}>
-                                    <div className="text-center h5">Login</div>
+    return (
+        <>
+            {state.isLogin ? <Welcome /> : 
+                (<>
+                    <GuestGreeting />
+                    <Container>
+                        <Row 
+                        className="d-flex justify-content-center mt-5">
+                            <Col md="4">
+                            <Form onSubmit={handleOnSubmit}>
+                                <div className="text-center h5">Login</div>
 
-                                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Label>Email address</Form.Label>
-                                    <Form.Control 
-                                        id="email"
-                                        name="email" size="sm" type="email" 
-                                        placeholder="Enter email" />
-                                    </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control 
+                                    id="email"
+                                    name="email" size="sm" type="email" 
+                                    placeholder="Enter email" />
+                                </Form.Group>
 
-                                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                                    <Form.Label>Password</Form.Label>
-                                    <Form.Control 
-                                        id="password"
-                                        name="password" size="sm" type="password" 
-                                        placeholder="Password" />
-                                    </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicPassword">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control 
+                                    id="password"
+                                    name="password" size="sm" type="password" 
+                                    placeholder="Password" />
+                                </Form.Group>
 
-                                    <Button variant="primary" type="submit" size="sm">
-                                        Submit
-                                    </Button>
-                                </Form>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </>) }
-            </>
-        )
-    }
+                                <Button variant="primary" type="submit" size="sm">
+                                    Submit
+                                </Button>
+                            </Form>
+                            </Col>
+                        </Row>
+                    </Container>
+                </>) }
+        </>
+    )
 }
+
+export default App;

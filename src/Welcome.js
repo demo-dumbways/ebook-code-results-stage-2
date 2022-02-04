@@ -1,20 +1,17 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 
-export default class Welcome extends Component {
+export default function Welcome() {
 
-    componentDidMount(){
+    useEffect(()=>{
         console.log("Welcome Component Did Mount")
-    }
+        return () => {
+            console.log("Welcome Component Will Unmount")
+        }
+    },[])
 
-    componentWillUnmount(){
-        console.log("Welcome Component  Will Unmount")
-    }
-
-    render() {
-        return (
-            <div className="vh-100 bg-warning d-flex justify-content-center align-items-center h1 mb-0">
-                Welcome
-            </div>
-        )
-    }
+    return (
+        <div className="vh-100 bg-warning d-flex justify-content-center align-items-center h1 mb-0">
+            Welcome
+        </div>
+    )
 }
