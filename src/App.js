@@ -1,19 +1,15 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-
-// import necessary object from react-router-dom
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-
-// import our "page-like" component
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
 import SignIn from "./pages/SignIn";
 
 function App() {
+  // code inside div
   return (
     <Router>
       <div>
-        {/* Setup navigation element */}
         <nav>
           <ul>
             <li>
@@ -25,14 +21,9 @@ function App() {
             <li>
               <Link to="/profile">Profile</Link>
             </li>
-            <li>
-              <Link to="/signin">Sign in</Link>
-            </li>
           </ul>
         </nav>
       </div>
-      {/* define Route and component that will 
-      render if the URL match by using Switch */}
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/about" element={<About />} />

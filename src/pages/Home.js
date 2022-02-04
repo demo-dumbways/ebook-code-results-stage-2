@@ -1,6 +1,17 @@
-import { Container } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
+// import useHistory
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  // call useHistory to get history instances
+  const navigate = useNavigate();
+
+  // create function for handle push to another pages
+  // using button
+  const handleNaviateToSignIn = () => {
+    navigate("/signin");
+  };
+
   return (
     <Container className="text-center">
       <p className="h1">Home</p>
@@ -14,6 +25,7 @@ function Home() {
         parturient montes, nascetur ridiculus mus. Donec et maximus tellus, sit
         amet hendrerit augue.
       </p>
+      <Button onClick={handleNaviateToSignIn}>Click to Signin</Button>
     </Container>
   );
 }
