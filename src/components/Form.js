@@ -29,7 +29,6 @@ const styles = {
   },
 };
 
-// change component name because it has used by react-bootstrap
 function FormComponent() {
   return (
     //inline styling
