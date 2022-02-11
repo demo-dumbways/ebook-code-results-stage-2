@@ -9,6 +9,7 @@ import About from "./pages/About";
 import Profile from "./pages/Profile";
 import SignIn from "./pages/SignIn";
 import DetailUser from "./pages/DetailUser";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -30,10 +31,13 @@ function App() {
       </div>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/users/:id" element={<DetailUser />} />
+        <Route exact path="/signin" element={<SignIn />} />
+        {/* protect this routes with <PrivateRoute> */}
+        <Route exact path="/" element={<PrivateRoute />}>
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/profile" element={<Profile />} />
+          <Route exact path="/users/:id" element={<DetailUser />} />
+        </Route>
       </Routes>
     </Router>
   );
