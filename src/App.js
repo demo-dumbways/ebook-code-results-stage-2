@@ -1,42 +1,87 @@
-import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useState, useEffect } from 'react'
+import { 
+    Container, 
+    Row, Col, Form, 
+    Button } from 'react-bootstrap'
 
-// import necessary object from react-router-dom
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-
-// import our "page-like" component
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Profile from "./pages/Profile";
-import SignIn from "./pages/SignIn";
-import DetailUser from "./pages/DetailUser";
+import Welcome from './Welcome'
+import GuestGreeting from './GuestGreeting'
 
 function App() {
-  return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/profile">Profile</Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/users/:id" element={<DetailUser />} />
-      </Routes>
-    </Router>
-  );
+
+    const [state, setState] = useState({
+        isLogin: false,
+        user: {
+            email: '',
+            password: ''
+        }
+    })
+
+    // Did Mount
+    useEffect(()=>{
+        console.log("App Component Did Mount")
+        console.log(state)
+    },[])
+
+    // Did Update
+    useEffect(()=>{
+        if(state.user.email){
+            console.log("App Component Did Update")
+            console.log(state)
+        }
+    },[state])
+
+    const handleOnSubmit = (e) => {
+        e.preventDefault()
+        const email = document.getElementById('email').value
+        const password = document.getElementById('password').value
+        setState({
+            isLogin: true,
+            user: { 
+                email,
+                password
+            }
+        })
+    }
+
+    return (
+        <>
+            {state.isLogin ? <Welcome /> : 
+                (<>
+                    <GuestGreeting />
+                    <Container>
+                        <Row 
+                        className="d-flex justify-content-center mt-5">
+                            <Col md="4">
+                            <Form onSubmit={handleOnSubmit}>
+                                <div className="text-center h5">Login</div>
+
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control 
+                                    id="email"
+                                    name="email" size="sm" type="email" 
+                                    placeholder="Enter email" />
+                                </Form.Group>
+
+                                <Form.Group className="mb-3" controlId="formBasicPassword">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control 
+                                    id="password"
+                                    name="password" size="sm" type="password" 
+                                    placeholder="Password" />
+                                </Form.Group>
+
+                                <Button variant="primary" type="submit" size="sm">
+                                    Submit
+                                </Button>
+                            </Form>
+                            </Col>
+                        </Row>
+                    </Container>
+                </>) }
+        </>
+    )
 }
 
 export default App;
