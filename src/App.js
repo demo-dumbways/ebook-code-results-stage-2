@@ -1,5 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+
+// import necessary object from react-router-dom
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+
+// import our "page-like" component
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
